@@ -16,7 +16,17 @@ class NextEventViewController < UIViewController
     self.view.backgroundColor = UIColor.whiteColor
     
   end  
+
+  def viewWillAppear(animated)
+    super
+    @days_left = @event.days_left_until(@event.date)
+  end
     
+  def viewDidAppear(animated)
+    super
+    @days_left_view.days_left = @days_left
+    @days_left_view.setNeedsDisplay
+  end
 
   
   def setUpTabBarItem
